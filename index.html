@@ -59,11 +59,6 @@
   <!-- Academic/Research Specific -->
   <meta name="citation_title" content="Hyperspectral imaging unmixing
 ">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
   
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
@@ -207,11 +202,11 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Mohammed-El-Houcine Ayoubi</a><sup></sup>,</span>
+                <a href="" target="_blank">Mohammed-El-Houcine Ayoubi</a><sup></sup>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Ahmed ABOULKACEM</a><sup></sup>,</span>
+                  <a href="" target="_blank">Ahmed ABOULKACEM</a><sup></sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Mouad SOUSSI</a><sup></sup>,</span>
+                    <a href="" target="_blank">Mouad SOUSSI</a><sup></sup>,</span>
                   </span>
                   </div>
 
@@ -251,7 +246,7 @@
               </p>
             </div>
             <div class="column is-half">
-              <img src="img/unmix.png" alt="Unmixing the image" class="is-responsive">
+              <img src="static/images/unmix.png" alt="Unmixing the image" class="is-responsive">
             </div>
           </div>
 
@@ -332,7 +327,7 @@
 
           <div>
             <h2>Parallelization methode 1</h2>
-            <img src="img/DIAG_2_page-0001.jpg" alt="p1" class="is-responsive">
+            <img src="static/images/DIAG_2_page-0001.jpg" alt="p1" class="is-responsive">
 
             <p>The first methode is to to vectorize over the each single parrameter (they are mutually independante), each worker computes for a determined number of eterations (200):</p>
             \[
@@ -354,7 +349,7 @@
 
           <div>
             <h2>Proposed methode</h2>
-            <img src="img/DIAG_1_page-0001.jpg" alt="p2" class="is-responsive">
+            <img src="static/images/DIAG_1_page-0001.jpg" alt="p2" class="is-responsive">
 
             <p><strong>This High-performance method adds more work per worker, the current Julia implementation yields a 4x improvement over the original serial implementation and a 2.5x improvement over the previous parallelization</strong></p>
             <p>Given a matrix \(S\) composed of column vectors \(s_1, s_2, s_3, s_4\):</p>
