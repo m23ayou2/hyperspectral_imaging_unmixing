@@ -393,13 +393,19 @@
             Y = A S^T S - X^T S
             \]
           </div>
+          <h2>Results</h2>
+            <img src="static/images/times.png" alt="p1" class="is-responsive">
 
-          <h2>Result Discussion</h2>
+
+
+          <h2>Discussion</h2>
           <p>When we look at the results of these benchmarks,we can draw a few important conclusions about how the system is performing:</p>
           <h3>I. Impact of Algorithmic Optimization</h3>
           <p>By rewriting the gradient to use \(G = S^TS\), we've significantly reduced the workload. In the original version, we were multiplying a \(144 \times 4\) matrix in every single iteration. Now, we'are using a \(4 \times 4\) matrix. we expect the Serial Time to be much faster than before.</p>
           <h3>III. Speedup and Scalability</h3>
           <p>we've noticed that as the image size increases, our parallel efficiency improves. This happens because the time we spend setting up the workers and broadcasting data becomes a smaller fraction of the total work.</p>
+          
+          
           <h3>IV. Geometric Constraints</h3>
           <p>we've ensured that every pixel result strictly follows the ANC (Non-negativity) and ASC (Sum-to-one) constraints via the simplex projection. By calculating the optimal step size \(1/L\), we've also guaranteed that we'm converging to the solution as quickly as possible for every pixel in the cube.</p>
           <p>The high reconstruction error observed in water regions can be explained by the poor and uninformative signal returned from water surfaces. In optical imagery, water strongly absorbs electromagnetic radiation, resulting in low reflectance, limited texture, and reduced contrast. In radar imagery, smooth water surfaces tend to produce specular reflection, causing most of the radar energy to be reflected away from the sensor and leading to very low backscatter. As a result, these regions contain fewer discriminative features for the model to learn and reconstruct accurately, which leads to elevated reconstruction errors compared to surrounding land areas.</p>
