@@ -331,7 +331,7 @@
             <h2>Parallelization methode 1</h2>
             <img src="static/images/DIAG_2_page-0001.jpg" alt="p1" class="is-responsive">
 
-            <p>The first methode is to to vectorize over the each single parrameter (they are mutually independante), each worker computes for a determined number of eterations (200):</p>
+            <p>The first method is to vectorize over each individual parameter (which are mutually independent); each worker then computes for a set number of iterations (200):</p>
             \[
             y =  a_w - \gamma \frac{\partial L}{\partial a_w}
             \]
@@ -353,7 +353,7 @@
             <h2>Proposed methode</h2>
             <img src="static/images/DIAG_1_page-0001.jpg" alt="p2" class="is-responsive">
 
-            <p><strong>This High-performance method adds more work per worker, the current Julia implementation yields a 4x improvement over the original serial implementation and a 2.5x improvement over the previous parallelization</strong></p>
+            <p><strong>This High-performance method adds more work per worker, the current Julia implementation yields a 3.7x improvement over the original serial implementation and a 2.5x improvement over the previous parallelization</strong></p>
             <p>Given a matrix \(S\) composed of column vectors \(s_1, s_2, s_3, s_4\):</p>
             \[
             S = \begin{pmatrix} s_1 & s_2 & s_3 & s_4 \end{pmatrix}
