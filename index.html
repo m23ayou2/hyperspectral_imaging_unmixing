@@ -325,7 +325,7 @@
           \]
           <p>We look for the largest \(\rho\) such that \(w_\rho > 0\) (soit \(y_{(\rho)} + \lambda > 0\)) is respected.</p>
           <p><strong>Sorting</strong> The standard efficient algorithm finds the active set by sorting \((y)\) in descending order and scanning cumulative sums to find the largest index \((\rho)\) such that the associated \((\lambda)\) makes those \((\rho)\) entries positive. The KKT conditions guarantee this yields the correct active set and lambda.</p>
-          <p><strong>Complexity:</strong> sorting dominates: (O(P\log P)) per projection, plus (O(P)) for the scan. For moderate (P) (e.g. P small, materials count), this is cheap.</p>
+          <p><strong>Complexity:</strong> sorting dominates: (O(P log P)) per projection, plus (O(P)) for the scan. For moderate (P) (e.g. P small, materials count), this is cheap.</p>
 
           <div>
             <h2>Parallelization methode 1</h2>
@@ -398,17 +398,42 @@
 
 
 
-          <h2>Discussion</h2>
+          <h2>Benchmark Discussion</h2>
           <p>When we look at the results of these benchmarks,we can draw a few important conclusions about how the system is performing:</p>
           <h3>I. Impact of Algorithmic Optimization</h3>
+          <p>We noticed that the batching optimization significantly improved the latency of the reconstruction while maintaining an \(L^0\) norm between the 2 parameter matrices of the serial and batched versions of \[L^0 = \left| A^{serial} - A^{batched} \right| = 3 \times 10^{-13}\].</p>
           <p>By rewriting the gradient to use \(G = S^TS\), we've significantly reduced the workload. In the original version, we were multiplying a \(144 \times 4\) matrix in every single iteration. Now, we'are using a \(4 \times 4\) matrix. we expect the Serial Time to be much faster than before.</p>
+
           <h3>III. Speedup and Scalability</h3>
           <p>we've noticed that as the image size increases, our parallel efficiency improves. This happens because the time we spend setting up the workers and broadcasting data becomes a smaller fraction of the total work.</p>
           
           
           <h3>IV. Geometric Constraints</h3>
           <p>we've ensured that every pixel result strictly follows the ANC (Non-negativity) and ASC (Sum-to-one) constraints via the simplex projection. By calculating the optimal step size \(1/L\), we've also guaranteed that we'm converging to the solution as quickly as possible for every pixel in the cube.</p>
-          <p>The high reconstruction error observed in water regions can be explained by the poor and uninformative signal returned from water surfaces. In optical imagery, water strongly absorbs electromagnetic radiation, resulting in low reflectance, limited texture, and reduced contrast. In radar imagery, smooth water surfaces tend to produce specular reflection, causing most of the radar energy to be reflected away from the sensor and leading to very low backscatter. As a result, these regions contain fewer discriminative features for the model to learn and reconstruct accurately, which leads to elevated reconstruction errors compared to surrounding land areas.</p>
+        
+
+
+
+
+        <div class="content has-text-left">
+          <div class="columns is-vcentered">
+            <div class="column is-half">
+              <h2>Reconstruction Discussion</h2>
+                <p>The high reconstruction error observed in water regions can be explained by the poor and uninformative signal returned from water surfaces. In optical imagery, water strongly absorbs electromagnetic radiation, resulting in low reflectance, limited texture, and reduced contrast. In radar imagery, smooth water surfaces tend to produce specular reflection, causing most of the radar energy to be reflected away from the sensor and leading to very low backscatter. As a result, these regions contain fewer discriminative features for the model to learn and reconstruct accurately, which leads to elevated reconstruction errors compared to surrounding land areas.</p>
+            </div>
+            <div class="column is-half">
+              <img src="static/images/recon.png" alt="Unmixing the image" class="is-responsive">
+            </div>
+          </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
         </div>
       </div>
     </div>
