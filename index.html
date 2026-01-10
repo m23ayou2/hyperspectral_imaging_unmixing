@@ -409,7 +409,7 @@
           
           
           <h3>IV. Geometric Constraints</h3>
-          <p>we've ensured that every pixel result strictly follows the ANC (Non-negativity) and ASC (Sum-to-one) constraints via the simplex projection. By calculating the optimal step size \(1/L\), we've also guaranteed that we'm converging to the solution as quickly as possible for every pixel in the cube.</p>
+          <p>The high reconstruction error observed in water regions can be attributed to the poor and weak signal returned from water surfaces in hyperspectral imagery. Water strongly absorbs electromagnetic radiation across most visible, near-infrared, and shortwave infrared wavelengths, resulting in very low reflectance values, reduced spectral variability, and limited spatial texture. Consequently, the spectral signatures of water pixels are often low-contrast and less informative compared to surrounding land cover. This lack of discriminative spectral information makes it difficult for the model to accurately learn and reconstruct water regions, leading to higher reconstruction errors relative to non-water areas.</p>
         
 
 
