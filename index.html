@@ -402,15 +402,15 @@
           <p>When we look at the results of these benchmarks,we can draw a few important conclusions about how the system is performing:</p>
           <h3>I. Impact of Algorithmic Optimization</h3>
           <p>We noticed that the batching optimization significantly improved the latency of the reconstruction while maintaining an \(L^{\infty }\) norm between the 2 parameter matrices of the serial and batched versions of \[L^{\infty } = max_{i,j  \in [|1,P|][1,N]} \left| A^{serial}_{i,j} - A^{batched}_{i,j} \right| = 3 \times 10^{-13}\].</p>
-          <p>By rewriting the gradient to use \(G = S^TS\), we've significantly reduced the workload. In the original version, we were multiplying a \(144 \times 4\) matrix in every single iteration. Now, we'are using a \(4 \times 4\) matrix. we expect the Serial Time to be much faster than before.</p>
+          <p>By rewriting the gradient to use \(G = S^TS\), we've significantly reduced the workload. In the original version, we were multiplying a \(144 \times 4\) matrix in every single iteration. Now, we'are using a \(4 \times 4\) matrix.</p>
 
           <h3>III. Speedup and Scalability</h3>
           <p>we've noticed that as the image size increases, our parallel efficiency improves. This happens because the time we spend setting up the workers and broadcasting data becomes a smaller fraction of the total work.</p>
           
           
           <h3>IV. Geometric Constraints</h3>
-          <p>The high reconstruction error observed in water regions can be attributed to the poor and weak signal returned from water surfaces in hyperspectral imagery. Water strongly absorbs electromagnetic radiation across most visible, near-infrared, and shortwave infrared wavelengths, resulting in very low reflectance values, reduced spectral variability, and limited spatial texture. Consequently, the spectral signatures of water pixels are often low-contrast and less informative compared to surrounding land cover. This lack of discriminative spectral information makes it difficult for the model to accurately learn and reconstruct water regions, leading to higher reconstruction errors relative to non-water areas.</p>
-        
+
+          <p>we've ensured that every pixel result strictly follows the ANC (Non-negativity) and ASC (Sum-to-one) constraints via the simplex projection. By calculating the optimal step size \(1/L\) with \(L = ||| SS^T|||\), we converging to the solution as for every pixel in the cube.</p>
 
 
 
