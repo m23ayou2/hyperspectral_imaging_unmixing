@@ -206,7 +206,7 @@
                 <span class="author-block">
                   <a href="" target="_blank">Ahmed ABOULKACEM</a><sup></sup>,</span>
                   <span class="author-block">
-                    <a href="" target="_blank">Mouad SOUSSI</a><sup></sup>,</span>
+                    <a href="" target="_blank">Mouad SOUSSI</a>
                   </span>
                   </div>
 
@@ -401,7 +401,7 @@
           <h2>Benchmark Discussion</h2>
           <p>When we look at the results of these benchmarks,we can draw a few important conclusions about how the system is performing:</p>
           <h3>I. Impact of Algorithmic Optimization</h3>
-          <p>We noticed that the batching optimization significantly improved the latency of the reconstruction while maintaining an \(L^0\) norm between the 2 parameter matrices of the serial and batched versions of \[L^0 = \left| A^{serial} - A^{batched} \right| = 3 \times 10^{-13}\].</p>
+          <p>We noticed that the batching optimization significantly improved the latency of the reconstruction while maintaining an \(L^{\infty }\) norm between the 2 parameter matrices of the serial and batched versions of \[L^{\infty } = max_{i,j  \in [|1,P|][1,N]} \left| A^{serial}_{i,j} - A^{batched}_{i,j} \right| = 3 \times 10^{-13}\].</p>
           <p>By rewriting the gradient to use \(G = S^TS\), we've significantly reduced the workload. In the original version, we were multiplying a \(144 \times 4\) matrix in every single iteration. Now, we'are using a \(4 \times 4\) matrix. we expect the Serial Time to be much faster than before.</p>
 
           <h3>III. Speedup and Scalability</h3>
